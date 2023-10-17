@@ -81,12 +81,13 @@ class Model extends IBaseModel<Model> {
 }
 
 //TODO örnek kullanımı bu şekilde
-void fetch() async {
-  final List<Model>? model;
-  final ServiceFailure? failure;
+class Example {
+  void fetch() async {
   final serviceResponse = await NetworkManager.instance.get(path: '', model: Model());
   final value = switch (serviceResponse) {
-    Succes(data: final data) => model = data,
-    ServiceError(error: final error) => failure=error,
+    Succes(data: final data) => data,
+    ServiceError(error: final error) => error,
   };
+}
+
 }
